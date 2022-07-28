@@ -1,4 +1,5 @@
-import { ethers } from "hardhat";
+import { ethers, network } from "hardhat";
+import moveBlocks from "../utils/moveBlocks";
 
 async function main() {
   const nftMarketplace = await ethers.getContract("NftMarketplace");
@@ -20,6 +21,10 @@ async function main() {
     price
   );
   await listTx.wait(1);
+
+  if (network.config.chainId == 31337) {
+    await moveBlocks(2, 1000);
+  }
 }
 
 // We recommend this pattern to be able to use async/await everywhere

@@ -14,6 +14,9 @@ const config: HardhatUserConfig = {
       accounts: [process.env.RINKEBY_PRIVATE_KEY!],
       chainId: 4,
     },
+    localhost: {
+      chainId: 31337,
+    },
   },
   etherscan: {
     apiKey: {
